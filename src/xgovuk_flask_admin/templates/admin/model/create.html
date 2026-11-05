@@ -4,13 +4,12 @@
 {% from 'govuk_frontend_jinja/components/back-link/macro.html' import govukBackLink %}
 {%- from 'govuk_frontend_jinja/components/error-summary/macro.html' import govukErrorSummary -%}
 
-
 {% block head %}
   {{ super() }}
   {{ lib.form_css() }}
 {% endblock %}
 
-{% block beforeContent %}
+{% block containerStart %}
   {{ govukBackLink(params={"href": return_url}) }}
 {% endblock %}
 

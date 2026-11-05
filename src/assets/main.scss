@@ -1,9 +1,12 @@
+$functional-colours: (
+    brand: #912b88,
+);
+
 @use "govuk" with (
-    $govuk-new-organisation-colours: true,
     $govuk-assets-path: "assets/",
     $govuk-images-path: "images/",
     $govuk-fonts-path: "fonts/",
-    $govuk-brand-colour: #912b88,
+    $govuk-functional-colours: $functional-colours,
     $govuk-page-width: 1240px
 );
 @forward "moj/all" with (
@@ -39,7 +42,7 @@
         $direction: "bottom",
         $responsive-spacing-point: 0
     );
-    color: govuk.$govuk-secondary-text-colour;
+    color: govuk.govuk-functional-colour(secondary-text);
 
     display: block;
 }

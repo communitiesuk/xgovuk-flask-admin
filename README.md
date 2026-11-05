@@ -34,8 +34,15 @@ app.jinja_options = {
 }
 
 admin = Admin(app, theme=XGovukFrontendTheme())
-xgovuk_flask_admin = XGovukFlaskAdmin(app)
+xgovuk_flask_admin = XGovukFlaskAdmin(
+  app,
+  service_name="Manage widgets",  # shown in the service navigation
+  header_text="Department for Widgets",  # shown in the header; defaults to service_name
+)
 ```
+
+To use your own logo in the header, override the `headerRow` block in your admin base template and call
+`govukGenericHeader` with `logoHtml`.
 
 ### Writing model views
 

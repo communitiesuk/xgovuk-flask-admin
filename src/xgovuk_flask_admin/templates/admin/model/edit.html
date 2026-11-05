@@ -9,15 +9,13 @@
   {{ lib.form_css() }}
 {% endblock %}
 
-{% block beforeContent %}
+{% block containerStart %}
   {{ govukBackLink(params={"href": return_url}) }}
 {% endblock %}
 
 {% block action_panel %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {{ layout.messages() }}
-
       {% if form.errors %}
         {{ govukErrorSummary(wtforms_errors(form)) }}
       {% endif %}

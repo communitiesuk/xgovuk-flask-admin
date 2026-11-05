@@ -3,7 +3,7 @@
 {% from 'govuk_frontend_jinja/components/back-link/macro.html' import govukBackLink %}
 {% from 'govuk_frontend_jinja/components/summary-list/macro.html' import govukSummaryList %}
 
-{% block beforeContent %}
+{% block containerStart %}
   {{ govukBackLink(params={"href": return_url}) }}
 {% endblock %}
 

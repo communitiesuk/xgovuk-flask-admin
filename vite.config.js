@@ -43,12 +43,6 @@ export default defineConfig({
                     "node_modules/@ministryofjustice/frontend",
                     "node_modules/govuk-frontend/dist",
                 ],
-                silenceDeprecations: [
-                    "color-functions",
-                    "global-builtin",
-                    "slash-div",
-                    "import",
-                ],
             },
         },
     },

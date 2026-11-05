@@ -1,5 +1,5 @@
 {% extends 'govuk_frontend_jinja/template.html' %}
-{% from 'govuk_frontend_jinja/components/header/macro.html' import govukHeader %}
+{% from 'govuk_frontend_jinja/components/generic-header/macro.html' import govukGenericHeader %}
 {% from 'govuk_frontend_jinja/components/service-navigation/macro.html' import govukServiceNavigation %}
 {% from 'govuk_frontend_jinja/components/footer/macro.html' import govukFooter %}
 {% import 'admin/layout.html' as layout with context %}
@@ -12,7 +12,11 @@
 
 {% block govukHeader %}
   {% block headerRow %}
-  {{ govukHeader({"classes": "govuk-header--full-width-border"}) }}
+    {#- Override this block to supply your own logo, e.g. via "logoHtml" #}
+    {{ govukGenericHeader({
+      "url": url_for(admin_view.admin.endpoint ~ '.index'),
+      "logoText": xgovuk_flask_admin_header_text
+    }) }}
   {% endblock %}
 {% endblock %}
 

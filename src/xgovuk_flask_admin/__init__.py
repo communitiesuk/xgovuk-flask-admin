@@ -35,8 +35,19 @@ from enum import Enum
 
 
 class XGovukFlaskAdmin:
-    def __init__(self, app: Flask, service_name: str | None = None):
+    def __init__(
+        self,
+        app: Flask,
+        service_name: str | None = None,
+        header_text: str | None = None,
+    ):
+        """
+        :param service_name: Shown in the service navigation bar.
+        :param header_text: Shown in the header bar above the service navigation,
+            typically your organisation's name. Falls back to ``service_name``.
+        """
         self.service_name = service_name
+        self.header_text = header_text
 
         if app is not None:
             self.init_app(app)
@@ -44,7 +55,10 @@ class XGovukFlaskAdmin:
     def __inject_jinja2_global_variables(self, app):
         @app.context_processor
         def inject_xgovuk_flask_admin_globals():
-            return {"xgovuk_flask_admin_service_name": self.service_name}
+            return {
+                "xgovuk_flask_admin_service_name": self.service_name,
+                "xgovuk_flask_admin_header_text": self.header_text or self.service_name,
+            }
 
         app.template_global("xgovuk_flask_admin_include_css")(
             xgovuk_flask_admin_include_css
@@ -95,8 +109,14 @@ class XGovukFlaskAdmin:
                 ):
                     values.pop("xgovuk_flask_admin_host", None)
 
-    def init_app(self, app: Flask, service_name: str | None = None):
-        service_name = service_name or self.service_name
+    def init_app(
+        self,
+        app: Flask,
+        service_name: str | None = None,
+        header_text: str | None = None,
+    ):
+        self.service_name = service_name or self.service_name
+        self.header_text = header_text or self.header_text
 
         self.__inject_jinja2_global_variables(app)
         self.__setup_static_routes(app)

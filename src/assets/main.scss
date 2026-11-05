@@ -18,6 +18,10 @@ $functional-colours: (
 @use "components/filter-layout";
 @use "components/select-with-search";
 
+.govuk-generic-header {
+    background-color: govuk.govuk-functional-colour(brand);
+}
+
 .xgovuk-fa-table__cell--compact {
     padding-top: 3px;
     padding-bottom: 3px;

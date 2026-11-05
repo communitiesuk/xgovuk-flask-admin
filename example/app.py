@@ -94,7 +94,9 @@ def _create_app(config_overrides=None, seed: bool = True):
 
     # Initialize extensions
     admin = Admin(app, theme=XGovukFrontendTheme())
-    XGovukFlaskAdmin(app, service_name="X-GOV.UK Flask Admin")
+    XGovukFlaskAdmin(
+        app, service_name="X-GOV.UK Flask Admin", header_text="Example organisation"
+    )
     WTFormsHelpers(app)
     db = SQLAlchemy(app)
 

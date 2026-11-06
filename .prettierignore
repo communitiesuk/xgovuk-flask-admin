@@ -1,0 +1,13 @@
+# Build output
+src/xgovuk_flask_admin/static/dist/
+
+# prettier-plugin-jinja-template 2.1.0 cannot parse these templates. Both render
+# correctly; the constructs below are limitations of the plugin's HTML parser, so
+# the files are exempt rather than restructured.
+#
+#  - model/layout.html: the filter-tag <ul> is opened in one Jinja branch and
+#    closed in two others, so no single branch is well-formed HTML.
+#  - model/list.html: {{ ... }} is interpolated into <script> bodies, which
+#    Prettier parses as JavaScript.
+src/xgovuk_flask_admin/templates/admin/model/layout.html
+src/xgovuk_flask_admin/templates/admin/model/list.html

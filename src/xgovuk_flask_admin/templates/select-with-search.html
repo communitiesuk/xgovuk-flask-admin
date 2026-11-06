@@ -12,30 +12,24 @@
   The template structure itself is custom for Flask-Admin/WTForms/Jinja2.
 #}
 
-<div class="govuk-form-group{% if params.errorMessage %} govuk-form-group--error{% endif %} gem-c-select-with-search">
-  <label class="govuk-label{% if params.label.classes %} {{ params.label.classes }}{% endif %}" for="{{ params.id }}" id="{{ params.id }}-label">
-    {{ params.label.text }}
-  </label>
+<div class="govuk-form-group{% if params.errorMessage %}govuk-form-group--error{% endif %} gem-c-select-with-search">
+  <label class="govuk-label{% if params.label.classes %}{{ params.label.classes }}{% endif %}" for="{{ params.id }}" id="{{ params.id }}-label"> {{ params.label.text }} </label>
 
   {% if params.hint %}
-  <div id="{{ params.id }}-hint" class="govuk-hint">
-    {{ params.hint.text }}
-  </div>
+    <div id="{{ params.id }}-hint" class="govuk-hint">{{ params.hint.text }}</div>
   {% endif %}
 
   {% if params.errorMessage %}
-  <p id="{{ params.id }}-error" class="govuk-error-message">
-    <span class="govuk-visually-hidden">Error:</span> {{ params.errorMessage.text }}
-  </p>
+    <p id="{{ params.id }}-error" class="govuk-error-message"><span class="govuk-visually-hidden">Error:</span> {{ params.errorMessage.text }}</p>
   {% endif %}
 
   <select
-    class="govuk-select{% if params.errorMessage %} govuk-select--error{% endif %}"
+    class="govuk-select{% if params.errorMessage %}govuk-select--error{% endif %}"
     id="{{ params.id }}"
     name="{{ params.name }}"
     {% if params.multiple %}multiple{% endif %}
     data-module="select-with-search"
-    {% if params.hint %}aria-describedby="{{ params.id }}-hint{% if params.errorMessage %} {{ params.id }}-error{% endif %}"{% elif params.errorMessage %}aria-describedby="{{ params.id }}-error"{% endif %}
+    {% if params.hint %}aria-describedby="{{ params.id }}-hint{% if params.errorMessage %}{{ params.id }}-error{% endif %}"{% elif params.errorMessage %}aria-describedby="{{ params.id }}-error"{% endif %}
     {% for attr, value in params.attributes.items() %}
       {# Skip 'multiple' as it's already handled above #}
       {% if attr != 'multiple' %}
@@ -45,10 +39,9 @@
           {{ attr }}="{{ value }}"
         {% endif %}
       {% endif %}
-    {% endfor %}
-  >
+    {% endfor %}>
     {% for item in params.select_items %}
-    <option value="{{ item.value }}"{% if item.selected %} selected{% endif %}>{{ item.text }}</option>
+      <option value="{{ item.value }}" {% if item.selected %}selected{% endif %}>{{ item.text }}</option>
     {% endfor %}
   </select>
 </div>

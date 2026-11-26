@@ -1,5 +1,16 @@
 ## Developing this extension
 
+### Run Locally - Quickstart
+1. Install node dependencies
+`npm install`
+2. Build assets
+`npm run build`
+3. Install python dependencies
+`uv sync`
+4. Run the example app and note where it is running
+`uv run flask --app example.app run --debug`
+5. Navigate to the example site at eg. `http://127.0.0.1:5000/admin`
+
 ### Running tests
 
 Tests can be run against multiple Python versions (eg 3.13 and 3.14) using tox. The test suite is split into
